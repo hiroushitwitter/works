@@ -1,0 +1,345 @@
+table#R_LIST{
+  border:1px solid black;
+  border-collapse: collapse;
+  table-layout: fixed; /* これが重要：幅を均等にする */
+}
+table#R_LIST tr{
+  border:1px solid black;
+  content-visibility: auto;
+}
+table#R_LIST th{
+ border:1px solid black;
+ text-align:center;
+  position: sticky;
+  top: -1px;
+  background-color:lightgray;
+  padding: 0px 10px 0px 10px;
+  white-space:nowrap;
+  width:1px;
+  z-index:5;
+}
+
+table#R_LIST td{
+  border:1px solid black;
+  padding: 0px 4px 0px 4px;
+  vertical-align: top;
+}
+
+table#R_LIST tr td:nth-last-child(5) div,table#R_LIST tr td:nth-last-child(1) div,table#R_LIST tr td:nth-last-child(6) div{
+	min-width:450px;
+}
+
+table#R_LIST tr td:nth-last-child(4) div,table#R_LIST tr td:nth-last-child(9) {
+	white-space:nowrap;
+}
+}
+table#R_LIST .l{
+  text-align:left;
+  white-space:normal;
+}
+table#R_LIST .r{
+  text-align:right;
+}
+
+
+table#R_LIST .SN{
+  margin:0px 2px 0px 0px;
+}
+table#R_LIST .moves{
+    position: sticky;
+    top: 20px;
+    bottom: 20px;
+}
+
+#toTop{
+	font-weight: bold;
+	width:51px;
+	height:50px;
+	position: fixed;
+	bottom: 4%;
+	right: 4%;
+	background: black;
+	border-radius: 20px;
+	z-index:10;
+}
+#delta{
+    font-weight: bold;
+    width: 0px;
+    height: 0px;
+    position: relative;
+    bottom: -4px;
+    right: -11px;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 25px solid white;
+}
+#sq{
+    font-weight: bold;
+    width: 15px;
+    height: 14px;
+    position: relative;
+    bottom: -4px;
+    right: -19px;
+    background-color: white;
+}
+table#R_LIST tr:nth-of-type(2n){
+	background-color:whitesmoke;
+}
+table#R_LIST tr:nth-of-type(2n+1){
+	background-color:mintcream;
+}
+
+table#search{
+  /* 必要であればボーダーなどを設定 */
+  border-collapse: collapse;
+}
+table#search td{
+    white-space: nowrap;
+}
+.howto{
+    line-height: 2;
+    padding: 3px 10px 3px 3px;
+    text-align: left;
+    left:100px;
+    top:-10px;
+    position: absolute;
+    background: #fff;
+    border: 1px solid #777;
+    font-weight: normal;
+    border-radius: 10px;
+    z-index:10;
+    isolation: isolate;
+}
+
+span[onclick]{
+	text-decoration: underline;
+	color:blue;
+}
+span[onclick]:hover {
+  cursor: pointer;
+}
+li details{
+    margin: -8px 0px 4px 0px;
+}
+li ul li{
+    margin: -9px 0px 5px -21px;
+}
+li>p{
+	line-height:1.2;
+}
+#SEACH_TXT{
+    width: 150px;
+}
+#tops{
+	position:relative;
+    --deff_pos :219px;
+}
+
+#tops::before,#tops::after{
+    content: "";
+    position: absolute;
+}
+
+
+#tops::before{
+    top: -58px;
+    left: var(--deff_pos);
+    margin-left: -8px;
+    border: 34px solid #00000000;
+    border-bottom-color: #777;
+    z-index: -100;
+   }
+#tops::after{
+    top: -44px;
+    left:calc(var(--deff_pos) + 12px);
+    margin-left: -8px;
+    border: 22px solid #00000000;
+    border-bottom-color: #ffffff;
+    z-index: 10;
+
+}
+
+#test{
+    background-color: gray;
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+	transition :all 0.2s ;
+	 transform-origin: right;
+	 z-index
+}
+#test:active{
+    width: 500px;
+
+}
+@media print {
+  .no-print {
+    display: none !important;
+  }
+ table#R_LIST th{
+    position: static !important;
+  } 
+ /* theadを各ページの最上部で繰り返す指定 */
+  thead {
+    display: table-header-group;
+  }
+
+}
+
+.new_cont{
+    border-radius:5px;
+    font-weight: normal;
+    padding: 5px;
+    border: solid 1px #68c440;
+    background-color: #f3f8e7;
+    font-size: 14px;
+    margin: 16px;
+    
+}
+
+.history_box{
+    border: solid 1px lightgray;
+    border-radius: 10px;
+    width: 420px;
+    height: 110px;
+    position: absolute;
+    background-color: white;
+    top: -45px;
+    left: 810px;
+    padding: 6px 12px 0px 3px;
+    overflow-x:clip;
+    overflow-y:auto;
+}
+#History_table{
+	table-layout:fixed;
+	border-collapse: collapse;
+}
+#History_table th,#History_table td{
+	text-align:center;
+	font-size: 10px;
+	padding: 0px 3px;
+	border:solid 1px;
+}
+p.del_btn{
+    position: relative;
+    border-radius: 3px;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    background-color: lightgray;
+    transition:background-color 0.2s;
+}
+
+#History_table p.del_btn:hover{
+    background-color: palevioletred;
+}
+
+p.del_btn::before,p.del_btn::after{
+    position: absolute;
+    background-color: white;
+    content: "";
+    width: 11px;
+    height: 2px;
+    color: white;
+    top: 8px;
+    left: 2px;
+    border-radius: 11px;
+}
+
+p.del_btn::before{
+    transform: translateY(-50%) rotate(-45deg);
+}
+p.del_btn::after{
+    position: absolute;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+
+#History_table tbody tr{
+	height:20px;
+}
+#History_table th:nth-of-type(1),#History_table td:nth-of-type(1){
+	min-width:16px;
+	max-width:16px;
+	border-width:0px;
+}
+#History_table th:nth-of-type(2),#History_table td:nth-of-type(2){
+	white-space:nowrap;
+	min-width:96px;
+	max-width:96px;
+}
+#History_table th:nth-of-type(3),#History_table td:nth-of-type(3){
+	white-space:nowrap;
+	min-width:44px;
+	max-width:44px;
+}
+#History_table th:nth-of-type(4),#History_table td:nth-of-type(4){
+	white-space:nowrap;
+	min-width:43px;
+	max-width:43px;
+}
+#History_table th:nth-of-type(5),#History_table td:nth-of-type(5){
+	white-space:nowrap;
+	min-width:40px;
+	max-width:40px;
+}
+#History_table th:nth-of-type(6){
+	min-width:145px;
+	max-width:145px;
+
+}
+#History_table td:nth-of-type(6){
+	overflow-x:clip;
+	white-space:nowrap;
+	smin-width:145px;
+	max-width:145px;
+}
+
+#F_info{
+    border: solid 0px #ded1d1;
+    position: fixed;
+    height: 0px;
+    width: 98%;
+    overflow-y: auto;
+    overflow-x: auto;
+    z-index: 8;
+    transition: height 0.2s,border 0.2s;
+    background-color: #ded1d1;
+    border-radius: 10px;
+    scrollbar-gutter: stable;
+    bottom: 1px;
+}
+
+#F_TABLE{
+    margin: 0px auto 10px auto;
+    margin-left: auto;
+    width: 98%;
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-size: 12px;
+    background-color: white;
+}
+#F_TABLE tr{
+  border:1px solid black;
+
+}
+#F_TABLE th,#F_TABLE td{
+  border:1px solid black;
+  vertical-align: top;
+
+}
+
+#F_TABLE td:nth-last-of-type(12),#F_TABLE td:nth-last-of-type(9){
+  white-space:nowrap;
+}
+
+#F_TABLE th{
+  white-space:nowrap;
+  text-align:center;
+  position: sticky;
+  top: -1px;
+  background-color:lightgray;
+  z-index:1;
+}
