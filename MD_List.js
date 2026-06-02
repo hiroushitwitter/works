@@ -78,10 +78,10 @@ async function Making_table(data){
 	}
 	const FList = FuncSheetLoad(data.slice(1));
 
-	fetch("save.php?name=MD_List_OUT",{
-		method: "POST",
-		body: JSON.stringify(FList)
-	});
+	//fetch("save.php?name=MD_List_OUT",{
+	//	method: "POST",
+	//	body: JSON.stringify(FList)
+	//});
 		
 	FList_out = Object.entries(FList).map(a => [a[0],Object.entries(a[1]).map(b => [b[0],Object.entries(b[1]).map(c => [c[0],c[1]])])]);
 	Header.splice(0,6,Header[4],Header[2],Header[5],"No.",Header[1],Header[3]);

@@ -6,57 +6,13 @@
 <meta http-equiv="Expires" content="0">
 <TITLE>製造仕掛不良リスト</TITLE>
 <base target="_blank">
-<?php	date_default_timezone_set('Asia/Tokyo'); ?>
-<script type="text/javascript" src="./MD_List.js?<?php echo date('ymdHi',filemtime('./MD_List.js')); ?>" charset="UTF-8"></script>
+<script type="text/javascript" src="./MD_List.js" charset="UTF-8"></script>
 <script src="./jquery-4.0.0.min.js"></script>
 <script src="./xlsx.full.min.js"></script>
-<link id="Style_Sheet"rel="stylesheet"  type="text/css" href="MD_List.css?<?php echo date("ymdHi",filemtime("MD_List.css")); ?>"/>
+<link id="Style_Sheet"rel="stylesheet"  type="text/css" href="MD_List.css"/>
 
 </HEAD>
 
-<?php
-	// エラー表示
-	ini_set('display_errors', 1);
-	error_reporting(E_ALL);
-
-	// スプレッドシートのID
-	$fileId = "1QvHerdYsigDufSJ4d0psbOi2ySms55a29PtJaWU1EPo";
-
-	// スプレッドシートをExcel(xlsx)として書き出すURLの組み立て
-	$base  = "https://docs.google.com/spreadsheets/d/";
-	$query = "/export" . "?" . "format=xlsx"; // ここでxlsx形式を指定
-	$url   = $base . $fileId . $query;
-
-	// ダウンロード実行
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, $url);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); // 変換処理のリダイレクトを追う
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-	curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0');
-
-	$data = curl_exec($ch);
-	$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-	curl_close($ch);
-
-	if ($httpCode === 200) {
-		$savePath = "downloaded_sheet.xlsx";
-		file_put_contents($savePath, $data);
-	}
-	else {
-	}
-	
-	$filename2 = "/share/external/remotes/unify002-prj/Group/ｾﾝﾀｰ/マウンター関連データー/マウンターライン生産情報/生産情報2020～最新.xlsx";
-	$filesave2 = "/share/MD0_DATA/Web/QM/qm-intra/test_PHP_JAVA/SSC_REMAIN/TEST.xlsx";
-	
-	function my_escapeshellarg($arg) {
-		return '"' . str_replace('"', '\\"', $arg) . '"';
-	}
-	$cmd2 = "cp " . my_escapeshellarg($filename2) . " " . my_escapeshellarg($filesave2);
-	system($cmd2);
-	chmod($filesave2, 0777);
-
-?>
 
 <body id="body" link=blue vlink=purple onload="FILEopen()">
 <div class="no-print">
@@ -71,10 +27,6 @@
 	</li>
 	<li>
 		検索対象で「製品名」を選択して検索ワードを空欄で検索すると、全てが検索対象となります。残件一覧の表示に使うと便利かもしれません。
-	</li>
-	<li>
-		URLにハッシュタグ#の後に「検索対象:検索ワード」をつけて検索結果が作成できます。&で繋げば絞り込み検索結果となります。<br>
-		例: <a href="http://192.168.130.11/QM/qm-intra/MD_List/MD_List.php#製品名:MV-1200&基板名:MAIN&作番:R24194">http://192.168.130.11/QM/qm-intra/test_PHP_JAVA/MD_List/MD_List.php#製品名:MV-1200&基板名:MAIN&作番:R24194</a>
 	</li>
 </ul>
 
