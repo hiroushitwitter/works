@@ -58,7 +58,7 @@ async function FILEopen(filename){
 	});
 	console.log("change1");
 	test_out_group2 = Object.fromEntries(
-		Object.entries(test_out_group).map(([key, value]) => [key,Object.groupBy(value, (b) => b[8].replace(/[^\x00-\x7E]/g, '').trim();)])
+		Object.entries(test_out_group).map(([key, value]) => [key,Object.groupBy(value, (b) => b[8].replace(/[^\x00-\x7E]/g, '').trim())])
 	);
 }
 
