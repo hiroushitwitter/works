@@ -421,7 +421,7 @@ function test_func(){
 	const target_KIBAN = target_div.innerText.split("\n")[0];
 	let target_SAKUBAN ;
 	if([1,2].includes(target_div.closest("td").cellIndex)){
-		target_SAKUBAN = target_div.closest("tr").cells[target_div.closest("td").cellIndex-1].innerText.split(/[ 　]|\n/)[0];
+		target_SAKUBAN = target_div.closest("tr").cells[target_div.closest("td").cellIndex-1].innerText.split(/[ 　(（⇒]|\n/)[0];
 	}
 	else{
 		let i = target_div.closest("tr").rowIndex-1	;
@@ -433,7 +433,7 @@ function test_func(){
 				break;
 			}
 		}
-		target_SAKUBAN = i != 0 ? $Id("R_LIST").tBodies[0].rows[i].cells[0].innerText.split(/[ 　(（⇒]|\n/)[0] : $Id("R_LIST").tBodies[0].rows[0].cells[1].innerText.split(/[ 　]|\n/)[0];
+		target_SAKUBAN = i != 0 ? $Id("R_LIST").tBodies[0].rows[i].cells[0].innerText.split(/[ 　(（⇒]|\n/)[0] : $Id("R_LIST").tBodies[0].rows[0].cells[1].innerText.split(/[ 　(（⇒]|\n/)[0];
 	}
 	console.log(target_SAKUBAN,test_out_group2[target_SAKUBAN]);
 	console.log(test_out_group2[target_SAKUBAN][target_KIBAN.trim()]);
