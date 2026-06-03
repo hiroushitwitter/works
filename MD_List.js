@@ -443,7 +443,7 @@ console.log(Object.keys(test_out_group2[target_SAKUBAN]).filter(a => {
 		console.log(a);
 		return a.replace(/[ _]/g, "").startsWith(target_KIBAN.replace(/[ _]|CARD|CD/g, ""));
 	}));
-	let result_MFG = test_out_group2[target_SAKUBAN][target_KIBAN.trim()].map(a => {
+	let result_MFG = test_out_group2[target_SAKUBAN][target_KIBAN.replace(/[ _]|CARD|CD/g, "")].map(a => {
 		const MFG_Days1 = new Date((a[0] - 25569) * 86400000).toISOString().split('T')[0].replaceAll("-","/");
 		const MFG_Days2 = new Date((a[13] - 25569) * 86400000).toISOString().split('T')[0].replaceAll("-","/");
 		return [MFG_Days1,...a.slice(1,13),MFG_Days2,...a.slice(14)];
