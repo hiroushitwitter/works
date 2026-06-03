@@ -236,7 +236,12 @@ function FuncDL(){
 	data = data.concat(FileResult);
 	console.log(FileResult);
 	let test_MFG = FileResult.map(a => test_out_group2[a[2].split(/[ 　(（⇒]|\n/)[0]]?.[	a[5].replace(/[ _]|CARD|CD/g, "")]);
-	test_MFG = test_MFG.map(a => a ? a.length < 1 ? a : a.flatMap(b => b) : "");
+	/*test_MFG = test_MFG.map(a => a ? a.length < 1 ? a : a.flatMap(b => b) : "").filter(a => a);
+	test_MFG = test_MFG.smap(a => {
+		const MFG_Days1 = new Date((a[0] - 25569) * 86400000).toISOString().split('T')[0].replaceAll("-","/");
+		const MFG_Days2 = new Date((a[13] - 25569) * 86400000).toISOString().split('T')[0].replaceAll("-","/");
+		return [MFG_Days1,...a.slice(1,13),MFG_Days2,...a.slice(14)];
+	*/
 	console.log(test_MFG);
 	const ws = XLSX.utils.json_to_sheet(data, { skipHeader: true });
 	const range = XLSX.utils.decode_range(ws['!ref']);
