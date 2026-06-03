@@ -438,9 +438,10 @@ function test_func(){
 	}
 	console.log(test_out_group2[target_SAKUBAN]);
 	console.log(test_out_group2[target_SAKUBAN][target_KIBAN.trim()]);
-	console.log(target_SAKUBAN.trim(),Object.keys(test_out_group2[target_SAKUBAN]));
+	console.log(target_KIBAN.trim(),Object.keys(test_out_group2[target_SAKUBAN]));
 
 console.log(Object.keys(test_out_group2[target_SAKUBAN]).filter(a => {
+		console.log(a);
 		a.startsWith(target_KIBAN.trim());
 	}));
 	let result_MFG = test_out_group2[target_SAKUBAN][target_KIBAN.trim()].map(a => {
