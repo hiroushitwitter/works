@@ -243,7 +243,6 @@ function FuncDL(){
 		return [MFG_Days1,...a.slice(1,13),MFG_Days2,...a.slice(14)];
 	});
 	test_MFG.unshift(test_header);
-	console.log(test_MFG);
 	const ws = XLSX.utils.json_to_sheet(data, { skipHeader: true });
 	const range = XLSX.utils.decode_range(ws['!ref']);
 	for (let i = range.s.r + 1; i <= range.e.r; i++) {
@@ -252,8 +251,17 @@ function FuncDL(){
 			ws[cellAddress] ? ws[cellAddress].z = 'yyyy/mm/dd' : "";
 		});
     }
+	const ws2 = XLSX.utils.json_to_sheet(test_MFG, { skipHeader: true });
+	const range2 = XLSX.utils.decode_range(ws2['!ref']);
+	for (let i = range2.s.r + 1; i <= range2.e.r; i++) {
+		[0,13].forEach(a => {
+			const cellAddress = XLSX.utils.encode_cell({ r: i, c: a });
+			ws2[cellAddress] ? ws2[cellAddress].z = 'yyyy/mm/dd' : "";
+		});
+    }
 	const wb = XLSX.utils.book_new();
 	XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+	XLSX.utils.book_append_sheet(wb, ws2, "Sheet2");
 	XLSX.writeFile(wb, "export.xlsx"); // ファイルの保存
 }
 	
