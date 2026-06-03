@@ -235,6 +235,8 @@ function FuncDL(){
 	data.push(dataBody[0].slice(0,-2));
 	data = data.concat(FileResult);
 	console.log(FileResult);
+	const test_MFG = FileResult.map（a => test_out_group2[a[2].split(/[ 　(（⇒]|\n/)[0]][	a[5].replace(/[ _]|CARD|CD/g, "")]);
+	console.log("TEST:",test_MFG);
 	const ws = XLSX.utils.json_to_sheet(data, { skipHeader: true });
 	const range = XLSX.utils.decode_range(ws['!ref']);
 	for (let i = range.s.r + 1; i <= range.e.r; i++) {
@@ -243,8 +245,6 @@ function FuncDL(){
 			ws[cellAddress] ? ws[cellAddress].z = 'yyyy/mm/dd' : "";
 		});
     }
-	const test_MFG = FileResult.map（a => test_out_group2[a[2].split(/[ 　(（⇒]|\n/)[0]][	a[5].replace(/[ _]|CARD|CD/g, "")]);
-	console.log(test_MFG);
 	const wb = XLSX.utils.book_new();
 	XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
 	XLSX.writeFile(wb, "export.xlsx"); // ファイルの保存
