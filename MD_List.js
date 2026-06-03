@@ -436,7 +436,7 @@ function test_func(){
 		}
 		target_SAKUBAN = i != 0 ? $Id("R_LIST").tBodies[0].rows[i].cells[0].innerText.split(/[ 　]|\n/)[0] : "";
 	}
-	console.log(test_out_group2[target_SAKUBAN]);
+	console.log(target_SAKUBAN,test_out_group2[target_SAKUBAN]);
 	console.log(test_out_group2[target_SAKUBAN][target_KIBAN.trim()]);
 	console.log(target_KIBAN.trim(),Object.keys(test_out_group2[target_SAKUBAN]));
 
