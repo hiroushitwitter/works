@@ -57,7 +57,7 @@ async function FILEopen(filename){
 		a[1].sort((b,c) => b[8].localeCompare(c[8]));
 	});
 	test_out_group2 = Object.fromEntries(
-		Object.entries(test_out_group).map(([key, value]) => [key,Object.groupBy(value, (b) => b[8].replace(/[^\x00-\x7E]/g, ''))])
+		Object.entries(test_out_group).map(([key, value]) => [key.replace(/[ _]|CARD|CD/g, ""),Object.groupBy(value, (b) => b[8].replace(/[^\x00-\x7E]/g, ''))])
 	);
 }
 
