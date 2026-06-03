@@ -56,7 +56,6 @@ async function FILEopen(filename){
 	Object.entries(test_out_group).forEach(a => {
 		a[1].sort((b,c) => b[8].localeCompare(c[8]));
 	});
-	console.log("change1");
 	test_out_group2 = Object.fromEntries(
 		Object.entries(test_out_group).map(([key, value]) => [key,Object.groupBy(value, (b) => b[8].replace(/[^\x00-\x7E]/g, ''))])
 	);
@@ -423,6 +422,7 @@ function test_func(){
 	let target_SAKUBAN ;
 	if([1,2].includes(target_div.closest("td").cellIndex)){
 		target_SAKUBAN = target_div.closest("tr").cells[target_div.closest("td").cellIndex-1].innerText.split(/[ 　]|\n/)[0];
+		console.log("in1,2");
 	}
 	else{
 		let i = target_div.closest("tr").rowIndex-1	;
