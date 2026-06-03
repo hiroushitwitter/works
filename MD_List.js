@@ -440,7 +440,7 @@ function test_func(){
 	console.log(target_KIBAN.trim(),Object.keys(test_out_group2[target_SAKUBAN]));
 
 console.log(Object.keys(test_out_group2[target_SAKUBAN]).filter(a => {
-		console.log(a);
+		console.log(a,target_KIBAN.replace(/[ _]|CARD|CD/g, ""));
 		return a.replace(/[ _]/g, "").startsWith(target_KIBAN.replace(/[ _]|CARD|CD/g, ""));
 	}));
 	let result_MFG = test_out_group2[target_SAKUBAN][target_KIBAN.replace(/[ _]|CARD|CD/g, "")].map(a => {
