@@ -442,7 +442,7 @@ function test_func(){
 
 console.log(Object.keys(test_out_group2[target_SAKUBAN]).filter(a => {
 		console.log(a);
-		return a.startsWith(target_KIBAN.trim());
+		return a.replace(/[ _]/g, "").startsWith(target_KIBAN.replace(/[ _]/g, ""));
 	}));
 	let result_MFG = test_out_group2[target_SAKUBAN][target_KIBAN.trim()].map(a => {
 		const MFG_Days1 = new Date((a[0] - 25569) * 86400000).toISOString().split('T')[0].replaceAll("-","/");
