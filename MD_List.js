@@ -241,6 +241,7 @@ function FuncDL(){
 		const MFG_Days1 = new Date((a[0] - 25569) * 86400000).toISOString().split('T')[0].replaceAll("-","/");
 		const MFG_Days2 = new Date((a[13] - 25569) * 86400000).toISOString().split('T')[0].replaceAll("-","/");
 		return [MFG_Days1,...a.slice(1,13),MFG_Days2,...a.slice(14)];
+	test_MFG.unshift(test_header);
 	console.log(test_MFG);
 	const ws = XLSX.utils.json_to_sheet(data, { skipHeader: true });
 	const range = XLSX.utils.decode_range(ws['!ref']);
