@@ -433,7 +433,7 @@ function test_func(){
 				break;
 			}
 		}
-		console.log("i=",i);
+		console.log("i=",i,$Id("R_LIST").tBodies[0].rows[1].cells[0].innerText.split(/[ 　]|\n/)[0] );
 		target_SAKUBAN = i != 0 ? $Id("R_LIST").tBodies[0].rows[i].cells[0].innerText.split(/[ 　]|\n/)[0] : "";
 	}
 	console.log(target_SAKUBAN,test_out_group2[target_SAKUBAN]);
