@@ -236,7 +236,7 @@ function FuncDL(){
 	data = data.concat(FileResult);
 	console.log(FileResult);
 	const test_MFG = FileResult.map(a => test_out_group2[a[2].split(/[ 　(（⇒]|\n/)[0]]?.[	a[5].replace(/[ _]|CARD|CD/g, "")]);
-	console.log(test_MFG.map(a => a.length < 1 ? a : a.flatMap(b => b)));
+	console.log(test_MFG.map(a => a ? a.length < 1 ? a : a.flatMap(b => b) : ""));
 	const ws = XLSX.utils.json_to_sheet(data, { skipHeader: true });
 	const range = XLSX.utils.decode_range(ws['!ref']);
 	for (let i = range.s.r + 1; i <= range.e.r; i++) {
