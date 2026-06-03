@@ -418,7 +418,7 @@ function FuncloadEventListener(){
 function test_func(){
 	const target_div = event.target;
 	const target_tr_index = target_div.closest("tr").rowIndex;
-	const target_KIBAN = target_div.innerText.split("\n")[0];
+	const target_KIBAN = target_div.innerText.split(/[\s（\(]+/)[0];
 	let target_SAKUBAN ;
 	if([1,2].includes(target_div.closest("td").cellIndex)){
 		target_SAKUBAN = target_div.closest("tr").cells[target_div.closest("td").cellIndex-1].innerText.split(/[ 　(（⇒]|\n/)[0];
