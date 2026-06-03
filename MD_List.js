@@ -260,8 +260,8 @@ function FuncDL(){
 		});
     }
 	const wb = XLSX.utils.book_new();
-	XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
-	XLSX.utils.book_append_sheet(wb, ws2, "Sheet2");
+	XLSX.utils.book_append_sheet(wb, ws, "不良抽出結果");
+	XLSX.utils.book_append_sheet(wb, ws2, "実装履歴抽出結果");
 	XLSX.writeFile(wb, "export.xlsx"); // ファイルの保存
 }
 	
