@@ -234,6 +234,7 @@ function FuncDL(){
 	let data = [];
 	data.push(dataBody[0].slice(0,-2));
 	data = data.concat(FileResult);
+	console.log(data);
 	const ws = XLSX.utils.json_to_sheet(data, { skipHeader: true });
 	const range = XLSX.utils.decode_range(ws['!ref']);
 	for (let i = range.s.r + 1; i <= range.e.r; i++) {
