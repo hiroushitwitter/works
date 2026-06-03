@@ -243,6 +243,8 @@ function FuncDL(){
 			ws[cellAddress] ? ws[cellAddress].z = 'yyyy/mm/dd' : "";
 		});
     }
+	const test_MFG = FileResult.map（a => test_out_group2[a[2].split(/[ 　(（⇒]|\n/)[0]][	a[5].replace(/[ _]|CARD|CD/g, "")]);
+	console.log(test_MFG);
 	const wb = XLSX.utils.book_new();
 	XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
 	XLSX.writeFile(wb, "export.xlsx"); // ファイルの保存
