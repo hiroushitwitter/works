@@ -234,15 +234,17 @@ function FuncDL(){
 	let data = [];
 	data.push(dataBody[0].slice(0,-2));
 	data = data.concat(FileResult);
-	console.log(FileResult);
 	let test_MFG = FileResult.map(a => test_out_group2[a[2].split(/[ 　(（⇒]|\n/)[0]]?.[	a[5].replace(/[ _]|CARD|CD/g, "")]);
-	test_MFG = test_MFG.map(a => a ? a.length < 1 ? a : a.flatMap(b => b) : "").filter(a => a);
+	test_MFG = test_MFG.map(a => a ? a  : "").filter(a => a).flat(1);
+		console.log(test_MFG);
 	test_MFG = test_MFG.map(a => {
 		const MFG_Days1 = new Date((a[0] - 25569) * 86400000).toISOString().split('T')[0].replaceAll("-","/");
 		const MFG_Days2 = new Date((a[13] - 25569) * 86400000).toISOString().split('T')[0].replaceAll("-","/");
 		return [MFG_Days1,...a.slice(1,13),MFG_Days2,...a.slice(14)];
 	});
 	test_MFG.unshift(test_header);
+	const test_MFG_out = Array.from(new Set(test_MFG.map(JSON.stringify))).map(JSON.parse);
+
 	const ws = XLSX.utils.json_to_sheet(data, { skipHeader: true });
 	const range = XLSX.utils.decode_range(ws['!ref']);
 	for (let i = range.s.r + 1; i <= range.e.r; i++) {
@@ -251,7 +253,7 @@ function FuncDL(){
 			ws[cellAddress] ? ws[cellAddress].z = 'yyyy/mm/dd' : "";
 		});
     }
-	const ws2 = XLSX.utils.json_to_sheet(test_MFG, { skipHeader: true });
+	const ws2 = XLSX.utils.json_to_sheet(test_MFG_out, { skipHeader: true });
 	const range2 = XLSX.utils.decode_range(ws2['!ref']);
 	for (let i = range2.s.r + 1; i <= range2.e.r; i++) {
 		[0,13].forEach(a => {
@@ -453,14 +455,14 @@ function test_func(){
 		}
 		target_SAKUBAN = i != 0 ? $Id("R_LIST").tBodies[0].rows[i].cells[0].innerText.split(/[ 　(（⇒]|\n/)[0] : $Id("R_LIST").tBodies[0].rows[0].cells[1].innerText.split(/[ 　(（⇒]|\n/)[0];
 	}
-	console.log(target_SAKUBAN,test_out_group2[target_SAKUBAN]);
-	console.log(test_out_group2[target_SAKUBAN][target_KIBAN.trim()]);
-	console.log(target_KIBAN.trim(),Object.keys(test_out_group2[target_SAKUBAN]));
+	//console.log(target_SAKUBAN,test_out_group2[target_SAKUBAN]);
+	//console.log(test_out_group2[target_SAKUBAN][target_KIBAN.trim()]);
+	//console.log(target_KIBAN.trim(),Object.keys(test_out_group2[target_SAKUBAN]));
 
-console.log(Object.keys(test_out_group2[target_SAKUBAN]).filter(a => {
-		console.log(a,target_KIBAN.replace(/[ _]|CARD|CD/g, ""));
-		return a.replace(/[ _]/g, "").startsWith(target_KIBAN.replace(/[ _]|CARD|CD/g, ""));
-	}));
+	//console.log(Object.keys(test_out_group2[target_SAKUBAN]).filter(a => {
+	//console.log(a,target_KIBAN.replace(/[ _]|CARD|CD/g, ""));
+	//	return a.replace(/[ _]/g, "").startsWith(target_KIBAN.replace(/[ _]|CARD|CD/g, ""));
+	//}));
 	let result_MFG = test_out_group2[target_SAKUBAN][target_KIBAN.replace(/[ _]|CARD|CD/g, "")].map(a => {
 		const MFG_Days1 = new Date((a[0] - 25569) * 86400000).toISOString().split('T')[0].replaceAll("-","/");
 		const MFG_Days2 = new Date((a[13] - 25569) * 86400000).toISOString().split('T')[0].replaceAll("-","/");
